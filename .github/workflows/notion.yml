@@ -1,16 +1,17 @@
-            - name: Notion Exporter
-  # You may pin to the exact commit or the version.
-  # uses: igor-kupczynski/notion-exporter@ecd2eebe438a69fe8a9bbfd4e4ac4ec4d9e05007
-  uses: igor-kupczynski/notion-exporter@v1.0.2
-  with:
-    # Comma-separated list of page to export the data from
-    pages: 
-    # Github token to use to commit to the repo
-    github-token: 
-    # Value of the token_v2 cookie
-    notion-token: 
-    # Directory under your repo to sync the data to; note the existing files will be deleted
-    output-dir: 
-    # Override the branch to use, defaults to the branch you run your workflow on
-    force-branch: # optional
-          
+name: Export my notion workspace
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"  # Call the export every 6 hours
+  workflow_dispatch: {}
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: igor-kupczynski/notion-exporter@v1.0.2
+        with:
+          pages: "20284b4c88ea8085a030e5eab3c8c9a3"  # Pages IDs identified in (step 2)  
+          output-dir: HCP
+          notion-token: ${{ secrets.NOTION_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
