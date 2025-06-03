@@ -1,1 +1,16 @@
-
+            - name: Notion Exporter
+  # You may pin to the exact commit or the version.
+  # uses: igor-kupczynski/notion-exporter@ecd2eebe438a69fe8a9bbfd4e4ac4ec4d9e05007
+  uses: igor-kupczynski/notion-exporter@v1.0.2
+  with:
+    # Comma-separated list of page to export the data from
+    pages: 
+    # Github token to use to commit to the repo
+    github-token: 
+    # Value of the token_v2 cookie
+    notion-token: 
+    # Directory under your repo to sync the data to; note the existing files will be deleted
+    output-dir: 
+    # Override the branch to use, defaults to the branch you run your workflow on
+    force-branch: # optional
+          
